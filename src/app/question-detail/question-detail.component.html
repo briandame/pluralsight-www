@@ -1,0 +1,21 @@
+<div *ngIf="question">
+  <h2>{{ question.text }} Details</h2>
+  <div><span>id: </span>{{question.id}}</div>
+  <div>
+    <label>question:
+      <input [(ngModel)]="question.question" placeholder="question"/>
+    </label>
+  </div>
+  <div>
+    <label>answer:
+      <input [(ngModel)]="question.answer" placeholder="answer"/>
+    </label>
+  </div>
+  <div>
+    <label>distractors:
+      <input [(ngModel)]="question.distracors" placeholder="distractors"/>
+    </label>
+  </div>
+</div>
+
+<button (click)="goBack()">Back</button>

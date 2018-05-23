@@ -1,0 +1,9 @@
+<ul class="questions">
+  <li *ngFor="let question of page.content">
+  	<a routerLink="/detail/{{question.id}}">
+      <span class="badge">{{question.id}}</span> {{question.question}}
+    </a>
+  </li>
+</ul>
+
+<app-question-detail [question]="selectedQuestion"></app-question-detail>
