@@ -16,11 +16,12 @@ export class QuestionsComponent implements OnInit {
   constructor(private questionService: QuestionService) { }
 
   ngOnInit() {
-  	this.getQuestionsPage();
+  	this.getQuestionsPage(0, 5000);
   }
 
-  getQuestionsPage(): void {
-    this.questionService.getQuestionsPage(0, 10)
+  getQuestionsPage(pageNumber: number, size: number): void {
+    console.log("Page number: " + pageNumber + ", size: " + size)
+    this.questionService.getQuestionsPage(pageNumber, size)
 		  .subscribe(page => this.page = page);
   }
 
