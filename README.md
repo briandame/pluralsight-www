@@ -12,3 +12,5 @@ This application provides a front end to manage questions, answers, and distract
 - Delete an existing question
 
 While the REST service supports pagination, I did not have time to implement it in the Angular application.
+
+The service is hosted on Heroku using the free hobby tier, which means it will be shut down after a period of no activity. It may take several seconds for a response on the first request while this instance and the back end service are started. If you experience issues with data not loading, making a request to https://dame-pluralsight.herokuapp.com/questions should resolve it.
