@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Question } from '../question';
 import { QuestionService } from '../question.service';
+import { Page } from '../page'
 
 @Component({
   selector: 'app-dashboard',
@@ -8,16 +9,17 @@ import { QuestionService } from '../question.service';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  questions: Question[] = [];
+  
+  page: Page;
 
   constructor(private questionService: QuestionService) { }
 
   ngOnInit() {
-    this.getQuestions();
+    this.getQuestionsPage();
   }
 
-  getQuestions(): void {
-    this.questionService.getQuestions()
-      .subscribe(questions => this.questions = questions.slice(1, 5));
+  getQuestionsPage(): void {
+    this.questionService.getQuestionsPage(0, 8)
+      .subscribe(page => this.page = page);
   }
 }

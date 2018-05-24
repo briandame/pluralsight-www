@@ -1,9 +1,27 @@
+<br/>
+<div>
+  <label>Question:
+    <input #question />
+  </label><br/>
+  <label>Answer:
+    <input #answer />
+  </label><br/>
+  <label>Distractors:
+    <input #distractors />
+  </label><br/>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(question.value, answer.value, distractors.value); question.value=''; answer.value=''; distractors.value=''">
+    Add
+  </button>
+</div><br/>
+
 <ul class="questions">
-  <li *ngFor="let question of page.content">
+  <li *ngFor="let question of page?.content">
   	<a routerLink="/detail/{{question.id}}">
       <span class="badge">{{question.id}}</span> {{question.question}}
     </a>
+    <button class="delete" title="Delete question" (click)="delete(question)">x</button>
   </li>
 </ul>
 
-<p>Found {{page.totalElements}} results: Page {{page.pageable.pageNumber + 1}} of {{page.totalPages}}</p>
+<p>Found {{page?.totalElements}} results: Page {{page?.pageable.pageNumber + 1}} of {{page?.totalPages}}</p>

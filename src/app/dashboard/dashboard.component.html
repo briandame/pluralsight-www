@@ -1,8 +1,8 @@
-<h3>Top Questions</h3>
+<h3>Recent Questions</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let question of questions" class="col-1-4" routerLink="/detail/{{question.id}}">
+  <a *ngFor="let question of page?.content" class="col-1-4" routerLink="/detail/{{question.id}}">
     <div class="module question">
-      <h4>{{question.text}}</h4>
+      <h4>{{question.question}}</h4>
     </div>
   </a>
 </div>

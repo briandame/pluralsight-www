@@ -10,17 +10,38 @@ import { Page } from '../page'
 })
 export class QuestionsComponent implements OnInit {
   
-  questions: Question[];
   page: Page;
+  question: Question = new Question();
 
   constructor(private questionService: QuestionService) { }
 
   ngOnInit() {
-  	this.getQuestions();
+  	this.getQuestionsPage();
   }
 
-  getQuestions(): void {
-    this.questionService.getQuestionsPage()
-		.subscribe(page => this.page = page);
+  getQuestionsPage(): void {
+    this.questionService.getQuestionsPage(0, 10)
+		  .subscribe(page => this.page = page);
+  }
+
+  add(question: string, answer: number, distractors: string): void {
+    question = question.trim();
+    distractors = distractors.trim();
+
+    if (!question || !answer || !distractors) { return; }
+
+    this.question.question = question;
+    this.question.answer = answer;
+    this.question.distractors = distractors;
+
+    this.questionService.addQuestion(this.question)
+      .subscribe(question => {
+         this.page.content.push(question);
+      });
+  }
+
+  delete(question: Question): void {
+    this.page.content = this.page.content.filter(q => q !== question);
+    this.questionService.deleteQuestion(question).subscribe();
   }
 }

@@ -1,8 +1,8 @@
 export class Question {
   id: number;
-  text: string;
+  question: string;
   answer: number;
-  distractors: number[];
+  distractors: string;
   createdAt: Date;
   updatedAt: Date;
 }

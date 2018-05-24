@@ -30,6 +30,11 @@ export class QuestionDetailComponent implements OnInit {
     	.subscribe(question => this.question = question);
   }
 
+  save(): void {
+   this.questionService.updateQuestion(this.question)
+     .subscribe(() => this.goBack());
+ }
+
   goBack(): void {
     this.location.back();
   }
